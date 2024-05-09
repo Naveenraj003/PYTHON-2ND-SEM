@@ -1,0 +1,200 @@
+# New Section
+
+a=[]
+n=int(input("no.of entries: "))
+for k in range(0,n):
+    b=int(input())
+    a.append(b)
+print(a)
+l= a[0]
+s= a[0]
+for num in a:
+    if num > l:
+        l = num
+    if num < s:
+        s = num
+print("The largest number is:", l)
+print("The smallest number is:", s)
+
+
+3.  Write a program to find the second largest and second smallest number in the list without using the in-built function.
+
+a=[]
+n=int(input("no.of entries: "))
+for k in range(0,n):
+    b=int(input())
+    a.append(b)
+print(a)
+max_num = min_num = a[0]
+second_max = second_min = a[0]
+
+for num in a:
+    if num > max_num:
+        second_max = max_num
+        max_num = num
+    elif num < min_num:
+        second_min = min_num
+        min_num = num
+
+print(f"Second largest number: {second_max}")
+print(f"Second smallest number: {second_min}")
+
+4. Write a program to sort elements stored in the list as Ascending order and Descending order without using the in-built function (sort ()).                
+Eg: [5,3,7,9,8,4,2]
+Output: [2,3,4,5,7,8,9] – Ascending Order, 
+	  [9,8,7,5,4,3,2] – Descending Order
+
+
+a=[]
+n=int(input("no.of entries: "))
+for k in range(0,n):
+    b=int(input())
+    a.append(b)
+print(a)
+for i in range(len(a)):
+    for j in range(0, len(a)-i-1):
+        if a[j] > a[j+1]:
+            a[j], a[j+1] = a[j+1], a[j]
+
+print("Ascending Order:", a)
+for i in range(len(a)):
+    for j in range(0, len(a)-i-1):
+        if a[j] < a[j+1]:
+            a[j], a[j+1] = a[j+1], a[j]
+
+print("Descending Order:", a)
+
+
+5. Find the index position of the specific number stored in the list.
+Eg: a= [45,67,83,24,55,87,77,34]
+What is the position of 55?
+
+
+a=[]
+n=int(input("no.of entries: "))
+for k in range(0,n):
+    b=int(input())
+    a.append(b)
+print(a)
+num = int(input("Enter the number to find its position: "))
+if num in a:
+    index = a.index(num)
+    print(f"The position of {num} in the list is: {index}")
+else:
+    print(f"{num} is not in the list.")
+
+6. Find most frequent element present in a list.
+Eg: a= [4,5,6,4,6,7,4,2,4,8,4]
+Output: 4
+
+
+from collections import Counter
+user_list = input("Enter elements of the list separated by spaces: ").split()
+element_count = Counter(user_list)
+most_common_element = max(element_count, key=element_count.get)
+print(f"The most frequent element in the list is: {most_common_element}")
+
+
+7. Below are the two lists. Write a Python program to convert them into a dictionary in a way that item from list1 is the key and item from list2 is the value by using update method ().
+keys = ['Ten', 'Twenty', 'Thirty']
+values = [10, 20, 30]
+Output:
+{'Ten': 10, 'Twenty': 20, 'Thirty': 30}
+
+
+
+keys = ['Ten', 'Twenty', 'Thirty']
+values = [10, 20, 30]
+
+result_dict = {}
+for key, value in zip(keys, values):
+    result_dict.update({key: value})
+
+print(result_dict)
+
+
+8. Create a list of 10 members as a Voter_list. Assume that there are 3 Candidates (A, B & C) are going to contest in the election process. Write a program that voters will cast their votes and predict the Winner and Runner of the election process and to find the members who voted for the Winner and Runner.
+
+
+
+p=[]
+n=int(input("No of peoples voting: "))
+for j in range(0,n):
+    h=input("Voters name: ")
+    p.append(h)
+print(f"Voters Name: {p}")
+k=[]
+r=[]
+d=[]
+n=[]
+for i in p:
+    v=int(input(f"MR.{i}:press: 1 for Kohli,2 for Virat,3 for Dhoni,4 for nota:\n "))
+    if v==1:
+        k.append(i)
+    elif v==2:
+        r.append(i)
+    elif v==3:
+        d.append(i)
+    elif v==4:
+        n.append(i)
+    else:
+        print("invalid vote")
+print(f"Voters Name: {p}")
+a=len(k)
+b=len(r)
+c=len(d)
+d=len(n)
+if a>b and a>c and a>d:
+    print(f"KOHLI won the election\nby {a}votes from: {k}")
+    print(f"ROHITH lose the election with {b} votes and DHONI lose the election with {c} votes")
+elif b>a and b>c and b>d:
+    print(f"ROHITH won the election\nby {b}votes from: {r}")
+    print(f"KOHLI lose the election with {d} votes and DHONI lose the election with {c} votes")
+elif c>b and c>a and c>d:
+    print(f"DHONI won the election\nby {c}votes from: {d}")
+    print(f"ROHITH lose the election with {b} votes and KOHLI lose the election with {a} votes")
+elif d>b and d>c and d>a:
+    print(f"{d} Votes for NOTA\nMaximum people votes for NOTA")
+
+
+
+
+
+9. Write a program to calculate the following functions:
+	1. India (Rupee) to US (Dollar) conversion
+	2. Celsius to Fahrenheit
+	3. BMI Calculation
+	4. Simple Interest Calculation
+
+
+
+
+def inr_to_usd(amount):
+    exchange_rate = 0.014
+    usd_amount = amount * exchange_rate
+    return usd_amount
+def celsius_to_fahrenheit(celsius):
+    fahrenheit = (celsius * 9/5) + 32
+    return fahrenheit
+def calculate_bmi(weight, height):
+    bmi = weight / ((height/100) ** 2)
+    return bmi
+def calculate_simple_interest(principal, rate, time):
+    interest = (principal * rate * time) / 100
+    return interest
+print("INR to USD:", inr_to_usd(1000))
+print("Celsius to Fahrenheit:", celsius_to_fahrenheit(25))
+print("BMI:", calculate_bmi(70, 170))
+print("Simple Interest:", calculate_simple_interest(1000, 5, 2))
+
+
+10. Write a program to get 0s and 1s in the list:
+
+def sort_zeros_ones(input_list):
+    zeros = input_list.count(0)
+    sorted_list = [0] * zeros + [1] * (len(input_list) - zeros)
+    return sorted_list
+
+input_list = [0, 1, 0, 1, 1, 0, 1, 0, 1, 0]
+output_list = sort_zeros_ones(input_list)
+print(output_list)
